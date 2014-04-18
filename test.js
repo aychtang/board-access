@@ -54,10 +54,20 @@ test('should change specific cell to value passed when set(x, y, v) is called', 
 // 2d map functionality.
 test('should map function over all cells of the board when map(fn) is called', function(t) {
 	var wrapped = access(board(2));
-	wrapped.map(function(x, y) {
+	wrapped.map(function(x, y, e) {
 		return x + y;
 	});
 	var value = wrapped.get(0, 1);
 	t.equal(value, 1);
+	t.end();
+});
+
+test('board should not change if function passed to map returns the element it receives', function(t) {
+	var wrapped = access(board(2));
+	var wrapped1 = access(board(2));
+	wrapped1.map(function(x, y, e) {
+		return e;
+	});
+	t.deepEqual(wrapped.value(), wrapped1.value());
 	t.end();
 });

@@ -26,7 +26,8 @@ accessWrapper.prototype.map = function(fn) {
 	var size = this.board.length;
 	for (var i = 0; i < size; i++) {
 		for (var j = 0; j < size; j++) {
-			this.board[i][j] = fn(i, j);
+			var element = this.board[i][j];
+			this.board[i][j] = fn(i, j, element);
 		}
 	}
 };
