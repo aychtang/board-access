@@ -1,0 +1,14 @@
+{
+  "name": "board-access",
+  "version": "0.0.0",
+  "description": "wraps a 2d array and provides get and set methods",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "tape": "~2.12.3"
+  }
+}
