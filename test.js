@@ -9,9 +9,9 @@ test('should return null if no board is provided on construction', function(t) {
 	t.end();
 });
 
-test('should return an object if a board is provided on construction', function(t) {
+test('should not be null if a board is provided on construction', function(t) {
 	var wrapped = access(board(1));
-	t.equal(Object.prototype.toString.call(wrapped), '[object Object]');
+	t.notEqual(Object.prototype.toString.call(wrapped), '[object Null]');
 	t.end();
 });
 
@@ -37,15 +37,15 @@ test('should return specific cell value when get(x, y) is called', function(t) {
 });
 
 test('should return specific cell value when get(x, y) is called', function(t) {
-	var wrapped = access(board(2, function(i, j){ return i + j; }));
+	var wrapped = access(board(2, function(i, j) { return i + j; }));
 	var value = wrapped.get(0, 1);
 	t.equal(value, 1);
 	t.end();
 });
 
 test('should change specific cell to value passed when set(x, y, v) is called', function(t) {
-	var wrapped = access(board(2, function(i, j){ return i + j; }));
-	wrapped.set(0, 1, 'hello')
+	var wrapped = access(board(2));
+	wrapped.set(0, 1, 'hello');
 	var value = wrapped.get(0, 1);
 	t.equal(value, 'hello');
 	t.end();
