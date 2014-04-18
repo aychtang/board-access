@@ -15,7 +15,7 @@ test('should not be null if a board is provided on construction', function(t) {
 	t.end();
 });
 
-test('should return wrapped board when value is called', function(t) {
+test('should return wrapped board when value() is called', function(t) {
 	var b = board(2);
 	var wrapped = access(b);
 	t.deepEqual(wrapped.value(), [[undefined, undefined],[undefined, undefined]]);
@@ -48,5 +48,16 @@ test('should change specific cell to value passed when set(x, y, v) is called', 
 	wrapped.set(0, 1, 'hello');
 	var value = wrapped.get(0, 1);
 	t.equal(value, 'hello');
+	t.end();
+});
+
+// 2d map functionality.
+test('should map function over all cells of the board when map(fn) is called', function(t) {
+	var wrapped = access(board(2));
+	wrapped.map(function(x, y) {
+		return x + y;
+	});
+	var value = wrapped.get(0, 1);
+	t.equal(value, 1);
 	t.end();
 });

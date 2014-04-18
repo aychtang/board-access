@@ -23,7 +23,12 @@ accessWrapper.prototype.set = function(x, y, value) {
 };
 
 accessWrapper.prototype.map = function(fn) {
-	return;
+	var size = this.board.length;
+	for (var i = 0; i < size; i++) {
+		for (var j = 0; j < size; j++) {
+			this.board[i][j] = fn(i, j);
+		}
+	}
 };
 
 module.exports = constructAccess;
